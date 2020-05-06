@@ -29,10 +29,11 @@ mytable.data.frame=function(x,...){
 #'               Default value is 1.
 #' @param show.all A logical value indicating whether or not all statistical
 #'                 values have to be shown in table. Default value is FALSE.
+#' @param show.pvalue A logical indicating whether or not the p-values should be shown in table. Default value is TRUE.
 #' @return An object of class "mytable.df".
 #'      'print' returns a table for descriptive statistics.
 #' @export
-mytable_df=function(x,use.labels=TRUE,use.column.label=TRUE,max.ylev=5,maxCatLevel=20,digits=1,method=1,show.all=FALSE) {
+mytable_df=function(x,use.labels=TRUE,use.column.label=TRUE,max.ylev=5,maxCatLevel=20,digits=1,method=1,show.all=FALSE, show.pvalue = TRUE) {
 
      # x=acs[2];use.labels=TRUE;use.column.label=TRUE;max.ylev=5;maxCatLevel=20;
      # digits=1;method=3;show.all=TRUE
@@ -147,7 +148,12 @@ mytable_df=function(x,use.labels=TRUE,use.column.label=TRUE,max.ylev=5,maxCatLev
     }
     stats=paste(out1,out2,out3)
 
-    result=data.frame(name=name,N=no,stats=stats,class=class,p=p,stringsAsFactors = FALSE)
+    if(show.pvalue){
+        result=data.frame(name=name,N=no,stats=stats,class=class,p=p,stringsAsFactors = FALSE)
+    }else{
+        result=data.frame(name=name,N=no,stats=stats,class=class,stringsAsFactors = FALSE)
+    }
+
 
     fmt=paste0("%-",max(nchar(result$name)),"s")
     result$name=sprintf(fmt,result$name)

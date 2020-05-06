@@ -4,8 +4,17 @@
 \alias{mytable_df}
 \title{make mytable from data.frame}
 \usage{
-mytable_df(x, use.labels = TRUE, use.column.label = TRUE, max.ylev = 5,
-  maxCatLevel = 20, digits = 1, method = 1, show.all = FALSE)
+mytable_df(
+  x,
+  use.labels = TRUE,
+  use.column.label = TRUE,
+  max.ylev = 5,
+  maxCatLevel = 20,
+  digits = 1,
+  method = 1,
+  show.all = FALSE,
+  show.pvalue = TRUE
+)
 }
 \arguments{
 \item{x}{A data.frame}
@@ -37,6 +46,8 @@ Default value is 1.}
 
 \item{show.all}{A logical value indicating whether or not all statistical
 values have to be shown in table. Default value is FALSE.}
+
+\item{show.pvalue}{A logical indicating whether or not the p-values should be shown in table. Default value is TRUE.}
 }
 \value{
 An object of class "mytable.df".
